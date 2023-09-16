@@ -6,10 +6,11 @@ config()
 
 const router = express.Router()
 
-router.get("/home", async (req, res) => {
-    const { mealId, area, category, ingredients, measurMents, instruction, reciepeName, youtubeLink, mealImage } = req.body
-    //    const {mealId, area, category} = req.body;
+router.post("/reciepe", async (req, res) => {
 
+    try {
+   
+    const { mealId, area, category, ingredients, measurMents, instruction, reciepeName, youtubeLink, mealImage } = req.body
     
         const newReciepe = new reciepe({
             mealId,
@@ -24,14 +25,20 @@ router.get("/home", async (req, res) => {
         })
 
        const savedReciepe =  await newReciepe.save()
+
        if(savedReciepe){
 
-           res.send({ status: 200, message: "reciepe saved" })
+           res.send({ status: 200, message: "saved Reciepe" })
        }else{
            res.send({ status: 200, message: "failed to add this reciepe." })
        }
+    } 
 
-    
+    catch{
+        res.send({ status: 202, message: "allready reciepe saved." })
+
+    }
+
     
 })
 

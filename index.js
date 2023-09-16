@@ -1,9 +1,7 @@
 import express from "express"
 import connection from "./db/connection.js";
-import cors from "cors";
-import reciepe from "./models/reciepeSchema.js";
-
-
+import cors from "cors"; 
+import reciepeRoute from "./routes/reciepeRoute.js";
 
 const app = express()
 
@@ -11,13 +9,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({ origin: "http://localhost:5173" }))
 
+app.use(reciepeRoute) 
 
-
-app.post( )
-
-
-
-
+app.get("/", async (req, res) => {
+    // res.status(200).sendFile(__dirname + "main.js")
+  });
 
 connection
     .then(() => {
