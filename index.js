@@ -13,6 +13,7 @@ app.use(cors({ origin: "http://localhost:5173" }))
 // app.use(reciepeRoute) 
 
 
+
 app.get("/", async (req, res) => {
     // res.status(200).sendFile(__dirname + "main.js")
   });
