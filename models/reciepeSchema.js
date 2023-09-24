@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const reciepeSchema = new mongoose.Schema({
     mealId : {
         type:String,
