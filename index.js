@@ -18,6 +18,12 @@ app.get("/", async (req, res) => {
     // res.status(200).sendFile(__dirname + "main.js")
   });
 
+
+app.get("/getAllBooks", (req, res)=> {
+
+})  
+
+
 connection
     .then(() => {
         app.listen(8000, () => {
