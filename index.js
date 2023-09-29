@@ -1,7 +1,8 @@
 import express from "express"
 import connection from "./db/connection.js";
-import cors from "cors"; 
-// import reciepeRoute from "./routes/newReciepeRoute.js";
+import cors from "cors";  
+import categoryImage from "./models/reciepeImageSchema.js";
+import reciepe
 
 const app = express()
 
@@ -14,12 +15,18 @@ app.use(cors({ origin: "http://localhost:5173" }))
 
 
 
-app.get("/", async (req, res) => {
+app.get("/", async(req, res) => {
     // res.status(200).sendFile(__dirname + "main.js")
   });
 
+  
 
-app.get("/getAllBooks", (req, res)=> {
+app.get("/getAllCategory", async(req, res)=> {
+ 
+    let allCategory = await categoryImage.find({})
+    console.log("heeeeeelo")
+    console.log(allCategory)
+    res.send({status: 200, message: "getting all category."})
 
 })  
 
