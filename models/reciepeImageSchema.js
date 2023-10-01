@@ -10,7 +10,6 @@ const imageSchema = new mongoose.Schema({
     }
 })
 
-
 const categoryImage = mongoose.model("categoryImage", imageSchema)
 
 export default categoryImage
