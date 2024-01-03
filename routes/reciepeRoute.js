@@ -26,12 +26,22 @@ router.get("/getSelectedCategory/:name", async(req, res) => {
 })
 
 
+//-------------------- Search reciepe ---------------------// 
 router.get("/searchBar/:inputValue", async(req, res) => {
+    
+    try{
 
-    let inputVal = req.params.inputValue;
-    console.log(inputVal)
+        let inputVal = req.params.inputValue; 
+        const regEx = new RegExp(inputVal, "i");
+        
+        const data = await reciepe.find({reciepeName: regEx})
+        // console.log(data)
+        res.send({status: 200, message: "getting searched items", data})
 
-    res.send({status: 200, message: "getting searched items", })
+    }catch(error){
+        res.send({status: 201, message: "sorry no reciepe"})
+    }
+
 })
 
 export default router
