@@ -25,4 +25,13 @@ router.get("/getSelectedCategory/:name", async(req, res) => {
 
 })
 
+
+router.get("/searchBar/:inputValue", async(req, res) => {
+
+    let inputVal = req.params.inputValue;
+    console.log(inputVal)
+
+    res.send({status: 200, message: "getting searched items", })
+})
+
 export default router
