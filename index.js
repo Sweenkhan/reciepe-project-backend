@@ -19,7 +19,6 @@ app.get("/", async(req, res) => {
   });
 
   
-  
 connection
     .then(() => {
         app.listen(8000, () => {
