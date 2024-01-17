@@ -4,7 +4,6 @@
 
  const router = express.Router()
 
-
  router.get("/getAllCategory", async(req, res)=> {
  
     let allCategory = await categoryImage.find({})  
