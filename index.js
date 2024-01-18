@@ -16,7 +16,6 @@ app.get("/", async(req, res) => {
     // res.status(200).sendFile(__dirname + "main.js")
   });
 
-  
 connection
     .then(() => {
         app.listen(8000, () => {
