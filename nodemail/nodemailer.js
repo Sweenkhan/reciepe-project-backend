@@ -1,9 +1,23 @@
 import nodemailer from "nodemailer"; 
+import contact from "../models/contactFormSchema.js";
 
 
 const creatNodeMail = async(req, res) => {
     const formData = req.body;
 
+    const email = formData.email
+    const found = await contact.findOne({email})
+
+    if(!found){
+        const {firstName, lastName, email, phone, message} = formData;
+
+        const custmerContact = new contact({
+            firstName, lastName, email, phone, message
+        })
+
+        const savedContact = await custmerContact.save()
+        console.log(savedContact)
+    } 
   // // Create a Nodemailer transporter using SMTP details
   const transporter = nodemailer.createTransport({
     service: "gmail",

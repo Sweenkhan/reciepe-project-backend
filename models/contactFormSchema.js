@@ -30,15 +30,7 @@ const contactSchema = new mongoose.Schema({
          message: {
             type: String,
             required: [true, "message is required."]
-        },
-         photoName: {
-            type: String,
-            required: [true, "photo name is required."]
-        }, 
-        photoPath: {
-            type: String,
-            required: [true, "photo path is required."]
-        }
+        } 
 })
 
 const contact = mongoose.model("Contact", contactSchema)
