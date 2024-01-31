@@ -1,5 +1,7 @@
 import nodemailer from "nodemailer"; 
 import contact from "../models/contactFormSchema.js";
+import { config } from "dotenv";
+config()
 
 
 const creatNodeMail = async(req, res) => {
@@ -22,8 +24,8 @@ const creatNodeMail = async(req, res) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
         auth: {
-      user: "khansween@gmail.com",
-      pass: "ykfzkxevhwhwmmql",
+      user: process.env.USER_EMAIL,
+      pass: process.env.USER_PASSWORD,
     },
   });
 
@@ -61,14 +63,17 @@ const creatNodeMail = async(req, res) => {
 
         const info2 = await transporter.sendMail(mailOptions2);
         console.log("Email sent: ", info2.response);
+        res.send({ status: 200, message: "everything is done!" });
         return true
     }
+    res.send({ status: 200, message: "We got your message. We will reach you as soon as we." });
     return true;
   } catch (error) {
     console.error("Error sending email: ", error);
+    res.send({ status: 201, message: "Rewrite the form filled." });
+
     return false;
   }
-  res.send({ status: 200, message: "everything is done!" });
 };
 
 
