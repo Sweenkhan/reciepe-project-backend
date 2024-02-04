@@ -43,4 +43,32 @@ router.get("/searchBar/:inputValue", async(req, res) => {
 
 })
 
+
+// ---------------------Most Popular--------------------------//
+router.get("/mostPopular", async(req, res)=> {
+    
+    let data = await reciepe.find({})
+     
+    function randomData(){
+        let result = []
+        let randomNumbers = []
+        for(let i = 0; i < 6; i++){
+            let random = Math.floor(Math.random() * data.length-1)
+            if(randomNumbers.includes[random]){
+                i = i-1
+            }else if(random<0){
+                i = i-1
+            }else{
+                randomNumbers.push(random)
+                result.push(data[random])
+            }
+        }
+        return result
+    }
+    
+    let mostPopularReciepes = randomData() 
+
+    res.send({status: 200, message: "getting searched items", mostPopularReciepes})
+})
+
 export default router
