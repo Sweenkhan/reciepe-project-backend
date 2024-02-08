@@ -4,7 +4,6 @@ config()
 
 const connection = mongoose.connect(process.env.MONGO_URL)
 
-
 export default connection;
 
  
