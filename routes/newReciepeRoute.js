@@ -3,7 +3,6 @@ import { config } from "dotenv";
 import reciepe from "../models/reciepeSchema.js";
 import categoryImage from "../models/reciepeImageSchema.js";
 
-
 config()
 const router = express.Router()
 
