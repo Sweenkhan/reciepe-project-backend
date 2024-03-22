@@ -20,13 +20,6 @@ app.get("/", async (req, res) => {
 
 app.post("/contact", creatNodeMail);
 
-// Add middleware to set Access-Control-Allow-Origin header
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://qreciepe.onrender.com");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
 
 connection.then(() => {
   app.listen(8000, () => {
