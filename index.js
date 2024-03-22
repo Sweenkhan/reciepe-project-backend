@@ -25,7 +25,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/contact", creatNodeMail)
-
+app.options('*', cors());
 
 connection.then(() => {
   app.listen(8000, () => {
