@@ -7,10 +7,6 @@ import creatNodeMail from "./nodemail/nodemailer.js";
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-// app.use(cors({ origin: "http://localhost:5173" }));
-
 app.use(cors({
   "origin": "https://qreciepe.onrender.com",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -18,12 +14,9 @@ app.use(cors({
   "optionsSuccessStatus": 204
  })); 
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://qreciepe.onrender.com'); // Replace with your Vue.js app's domain
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use(reciepeRoute);
 
