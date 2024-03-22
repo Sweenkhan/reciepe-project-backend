@@ -6,8 +6,12 @@ import creatNodeMail from "./nodemail/nodemailer.js";
 
 const app = express();
 
-// Apply CORS middleware before any other route handling middleware
-app.use(cors());
+app.use(cors({
+  "origin": "https://qreciepe.onrender.com",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+ })); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
