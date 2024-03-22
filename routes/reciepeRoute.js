@@ -1,12 +1,11 @@
  import express from "express";
  import categoryImage from "../models/reciepeImageSchema.js";
- import reciepe from "../models/reciepeSchema.js";
- import setCorsHeaders from "../middelware/cors.js";
+ import reciepe from "../models/reciepeSchema.js"; 
 
  const router = express.Router()
 
- 
- router.get("/getAllCategory", setCorsHeaders, async(req, res)=> {
+
+ router.get("/getAllCategory", async(req, res)=> {
  
     let allCategory = await categoryImage.find({})  
     res.send({status: 200, message: "getting all category.", allCategory: allCategory})
@@ -14,7 +13,7 @@
 })  
 
 
-router.get("/getSelectedCategory/:name", setCorsHeaders, async(req, res) => {
+router.get("/getSelectedCategory/:name", async(req, res) => {
 
     console.log(req.params.name)
     let category = req.params.name
@@ -28,7 +27,7 @@ router.get("/getSelectedCategory/:name", setCorsHeaders, async(req, res) => {
 
 
 //-------------------- Search reciepe ---------------------// 
-router.get("/searchBar/:inputValue", setCorsHeaders, async(req, res) => {
+router.get("/searchBar/:inputValue", async(req, res) => {
     
     try{
 
@@ -47,7 +46,7 @@ router.get("/searchBar/:inputValue", setCorsHeaders, async(req, res) => {
 
 
 // ---------------------Most Popular--------------------------//
-router.get("/mostPopular", setCorsHeaders, async(req, res)=> {
+router.get("/mostPopular", async(req, res)=> {
     
     let data = await reciepe.find({})
      
