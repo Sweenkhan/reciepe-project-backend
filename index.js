@@ -4,19 +4,13 @@ import cors from "cors";
 import reciepeRoute from "./routes/reciepeRoute.js"; 
 import creatNodeMail from "./nodemail/nodemailer.js";
 
-
 const app = express();
 
-app.use(cors({
-  "origin": "https://qreciepe.onrender.com",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
- })); 
+// Apply CORS middleware before any other route handling middleware
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use(reciepeRoute);
 
@@ -24,8 +18,15 @@ app.get("/", async (req, res) => {
   // res.status(200).sendFile(__dirname + "main.js")
 });
 
-app.post("/contact", creatNodeMail)
-app.options('*', cors());
+app.post("/contact", creatNodeMail);
+
+// Add middleware to set Access-Control-Allow-Origin header
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://qreciepe.onrender.com");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 connection.then(() => {
   app.listen(8000, () => {
