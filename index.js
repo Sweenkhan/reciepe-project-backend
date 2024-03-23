@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors({
   "origin": "https://qreciepe.onrender.com",
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "https://qreciepe.onrender.com",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
   "optionsSuccessStatus": 204
