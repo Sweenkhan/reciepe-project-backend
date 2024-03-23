@@ -6,20 +6,20 @@ import creatNodeMail from "./nodemail/nodemailer.js";
 
 const app = express();
 
-app.use(cors({
-  "origin": "https://qreciepe.onrender.com",
-  "Access-Control-Allow-Origin": "https://qreciepe.onrender.com",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
- })); 
+// app.use(cors({
+//   "origin": "https://qreciepe.onrender.com",
+//   "Access-Control-Allow-Origin": "https://qreciepe.onrender.com",
+//   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   "preflightContinue": false,
+//   "optionsSuccessStatus": 204
+//  })); 
 
  
-//  app.all('/', function(req, res, next) {
-//    res.header("Access-Control-Allow-Origin", "*");
-//    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//    next()
-//   });
+ app.use(cors({
+  origin: "https://qreciepe.onrender.com", // Replace with your frontend URL
+  methods: "GET, POST, PUT, DELETE",
+  allowedHeaders: "Content-Type, Authorization"
+}));
   
   // app.use(cors({origin: "http://localhost:5173"}))
 
